@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+  <title>Join Chat</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      background-color: #b3e0ff;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    #background-content {
+        background-color: white;
+        border: 1px solid #404040;
+        top: 50px;
+        position: fixed;
+        width: 90%;
+        height: 80%;
+        text-align: left;
+    }
+
+    #background-content h1 {
+        text-align: center;
+        color: #007acc;
+    }
+
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    #room-container {
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    #room-container div {
+      background-color: #ffffcc;
+      padding: 10px;
+    }
+
+    #room-container a {
+        padding: 10px;
+    }
+
+    #new-room-container {
+        position: fixed;
+        padding-bottom: 0px;
+        bottom: 0;
+        max-width: 1500px;
+        height: 65px;
+        width: 100%;
+        display: flex;
+        background: grey;
+    }
+
+    #new-room-container input {
+        flex-grow: 1;
+        background-color: white;
+        font-size: medium;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    
+    #new-room-container button {
+        background-color: #ffffb3;
+        width: 20%;
+    }
+    
+  </style>
+</head>
+<body>
+    <form id="background-content">
+        <h1>Join a Chat Room</h1>
+        <hr>
+        <div id="room-container">
+            <% Object.keys(rooms).forEach(room => { %>
+                <div><%= room %></div>
+                <a href="/<%= room %>">Join</a>
+            <% }) %>
+        </div>
+    </form>
+    <form id ="new-room-container" action="/room" method="POST">
+        <input name="room" type="text" required>
+        <button type="submit">Create New Room</button>
+    </form>
+</body>
+</html>

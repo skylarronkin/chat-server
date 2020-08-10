@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script>
+    const roomName = "<%= roomName %>"
+  </script>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+  <title>Chat App</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: #f4b480;
+      display: flex;
+      justify-content: center;
+      font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    #message-container {
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    #message-container div {
+      background-color: #fae9da;
+      padding: 5px;
+    }
+
+    #message-container div:nth-child(2n) {
+      background-color: #FFF;
+    }
+
+    #send-container {
+      position: fixed;
+      padding-bottom: 0px;
+      bottom: 0;
+      background-color: white;
+      max-width: 1200px;
+      height: 50px;
+      width: 100%;
+      display: flex;
+    }
+
+    #message-input {
+      flex-grow: 1;
+      border-color: black;
+      border-width: thin;
+      font-size: medium;
+    }
+
+    #send-button {
+      background-color: #fa9b4e;
+      border-color: black;
+      border-width: thin;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="message-container"></div>
+  <form id="send-container">
+    <input type="text" id="message-input">
+    <button type="submit" id="send-button">Send Message</button>
+  </form>
+</body>
+</html>
